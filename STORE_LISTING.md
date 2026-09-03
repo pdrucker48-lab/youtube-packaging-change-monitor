@@ -31,10 +31,14 @@ Disable the automatic `apify-default-dataset-item` event before launch to preven
 
 The first run quietly captures a baseline. Later scheduled runs emit only new or changed packaging evidence plus a ranked run digest.
 
+## Credential model
+
+Customers provide a Google API key restricted to YouTube Data API v3 in Apify's encrypted secret field. No YouTube login, OAuth grant, private analytics, or shared developer quota is required.
+
 ## Suggested categories and search terms
 
 Social media; Marketing; Automation; YouTube competitor monitor; thumbnail tracker; title change tracker; YouTube A/B test; view velocity; creator intelligence.
 
 ## Publication gate
 
-Configure a developer-owned `YOUTUBE_API_KEY` so ordinary buyers do not need one. Test two controlled runs and one known title or thumbnail change; verify that the old/new thumbnail files and response-curve rows are retained before publication.
+Test two controlled runs and one known title or thumbnail change; verify that the old/new thumbnail files and response-curve rows are retained before publication.
