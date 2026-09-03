@@ -7,7 +7,7 @@
     "youtubeApiKey": {
       "title": "YouTube Data API key",
       "type": "string",
-      "description": "Optional when the published Actor has a developer-hosted key. Otherwise provide your own Google API key with YouTube Data API v3 enabled.",
+      "description": "Your Google API key with YouTube Data API v3 enabled. Restrict the key to that API in Google Cloud. Apify masks this secret input.",
       "editor": "textfield",
       "isSecret": true
     },
@@ -106,5 +106,5 @@
       "editor": "number"
     }
   },
-  "required": ["channels", "monitorKey"]
+  "required": ["youtubeApiKey", "channels", "monitorKey"]
 }
