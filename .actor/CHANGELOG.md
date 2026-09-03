@@ -1,3 +1,9 @@
+## 1.2 — Keyless monitoring
+
+- Added a no-key public-feed mode for titles, thumbnail hashes, view counts, and likes.
+- Kept the optional official YouTube Data API mode for deeper metadata and up to 50 recent videos per channel.
+- Added public handle resolution, source labeling, feed limits, and keyless Store health checks.
+
 ## 1.1 — Conversion and signal upgrade
 
 - Added normal channel URLs and @handles as first-class inputs.

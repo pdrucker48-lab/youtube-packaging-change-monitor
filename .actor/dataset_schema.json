@@ -5,6 +5,7 @@
     "properties": {
       "recordType": { "type": "string", "title": "Record type" },
       "eventType": { "type": "string", "title": "Event type" },
+      "dataSource": { "type": ["string", "null"], "title": "Data source" },
       "channelId": { "type": "string", "title": "YouTube channel ID" },
       "channelTitle": { "type": ["string", "null"], "title": "Channel" },
       "videoId": { "type": "string", "title": "YouTube video ID" },
@@ -36,6 +37,7 @@
           "priority",
           "signalScore",
           "eventType",
+          "dataSource",
           "channelTitle",
           "videoId",
           "videoUrl",
@@ -58,6 +60,7 @@
           "priority": { "label": "Priority", "format": "text" },
           "signalScore": { "label": "Signal", "format": "number" },
           "eventType": { "label": "Event", "format": "text" },
+          "dataSource": { "label": "Source", "format": "text" },
           "channelTitle": { "label": "Channel", "format": "text" },
           "videoId": { "label": "Video", "format": "text" },
           "videoUrl": { "label": "Watch", "format": "link" },

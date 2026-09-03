@@ -91,6 +91,7 @@ export function createChangeRecord({ previous, current, observedAt, beforeVeloci
     return {
         recordType: 'packaging-change',
         eventType,
+        dataSource: current.dataSource ?? 'official-api',
         channelId: current.channelId,
         videoId: current.videoId,
         videoUrl: `https://www.youtube.com/watch?v=${current.videoId}`,
@@ -152,6 +153,7 @@ export function createImpactRecord({
     return {
         recordType: 'packaging-impact',
         eventType: 'PACKAGING_IMPACT_UPDATED',
+        dataSource: current.dataSource ?? 'official-api',
         channelId: current.channelId,
         videoId: current.videoId,
         videoUrl: `https://www.youtube.com/watch?v=${current.videoId}`,

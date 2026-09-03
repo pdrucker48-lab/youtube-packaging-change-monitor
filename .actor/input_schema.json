@@ -1,13 +1,13 @@
 {
   "title": "YouTube Title & Thumbnail Change Intelligence input",
-  "description": "Paste public YouTube channel URLs, @handles, or IDs. The Actor preserves packaging variants and ranks the strongest observed signals.",
+  "description": "Paste public YouTube channel URLs, @handles, or IDs. No API key is required; an optional key unlocks deeper official-API coverage.",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
     "youtubeApiKey": {
-      "title": "YouTube Data API key",
+      "title": "YouTube Data API key (optional)",
       "type": "string",
-      "description": "Your Google API key with YouTube Data API v3 enabled. Restrict the key to that API in Google Cloud. Apify masks this secret input.",
+      "description": "Leave blank for keyless public-feed monitoring. Add a key restricted to YouTube Data API v3 for up to 50 recent videos per channel and richer metadata. Apify masks this secret input.",
       "editor": "textfield",
       "isSecret": true
     },
@@ -25,7 +25,7 @@
     "recentVideosPerChannel": {
       "title": "Recent videos per channel",
       "type": "integer",
-      "description": "Number of recent uploads inspected for each channel on every run.",
+      "description": "Number of recent uploads inspected. Keyless mode supports up to 15; an optional official API key supports up to 50.",
       "default": 5,
       "minimum": 1,
       "maximum": 50,
@@ -99,7 +99,7 @@
     "requestTimeoutSecs": {
       "title": "Request timeout",
       "type": "integer",
-      "description": "Maximum seconds to wait for each YouTube API or thumbnail request.",
+      "description": "Maximum seconds to wait for each public metadata, official API, or thumbnail request.",
       "default": 25,
       "minimum": 5,
       "maximum": 60,

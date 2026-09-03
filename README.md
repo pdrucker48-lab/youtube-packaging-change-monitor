@@ -1,6 +1,6 @@
 # YouTube Title & Thumbnail Change Intelligence
 
-Track the packaging decisions competitor channels make after publishing. Paste normal channel URLs or `@handles`; the Actor preserves overwritten title and thumbnail variants, identifies repeated rotations, and ranks the strongest public performance signals for creators, agencies, and media teams.
+Track the packaging decisions competitor channels make after publishing—with no API key required. Paste normal channel URLs or `@handles`; the Actor preserves overwritten title and thumbnail variants, identifies repeated rotations, and ranks public performance signals for creators, agencies, and media teams.
 
 ## What buyers receive
 
@@ -10,7 +10,7 @@ Track the packaging decisions competitor channels make after publishing. Paste n
 - `TITLE_AND_THUMBNAIL_CHANGED`
 - `PACKAGING_IMPACT_UPDATED`
 
-Every packaging event includes the old/new creative evidence, observed change-time window, variant number, rotation count, time on the previous variant, time since publication, public views/likes/comments, view velocity before and after, and a deterministic `signalScore` with `HIGH`, `MEDIUM`, or `LOW` priority.
+Every packaging event includes the old/new creative evidence, observed change-time window, variant number, rotation count, time on the previous variant, time since publication, available public engagement data, view velocity before and after, and a deterministic `signalScore` with `HIGH`, `MEDIUM`, or `LOW` priority.
 
 Repeated or reused variants are flagged. Two or more early rotations can be labeled `isLikelyPackagingTest`, while every record remains explicitly `observationalNotCausal: true`.
 
@@ -22,13 +22,13 @@ Users can paste any of these forms:
 - `@GoogleDevelopers`
 - `UC_x5XG1OV2P6uZZ5FSM9Ttw`
 
-Provide a Google API key with YouTube Data API v3 enabled in the encrypted `youtubeApiKey` field. Restrict the key to YouTube Data API v3 in Google Cloud. Bring-your-own-key keeps every customer's quota isolated and avoids shared-key outages; the Actor never needs YouTube account access or OAuth.
+That is enough to start. Keyless mode uses YouTube's public channel feed plus content-hashed public thumbnails to monitor up to 15 recent videos per channel. It includes current titles, publication dates, public views and likes, and supports normal channel IDs and `@handles`.
 
-Create a key in [Google Cloud credentials](https://console.cloud.google.com/apis/credentials), enable **YouTube Data API v3**, then add an **API restriction** for that API. Google does not offer an application restriction that reliably matches Apify's rotating cloud egress, so do not reuse the key for unrelated APIs.
+The encrypted `youtubeApiKey` field is optional. Customers who already have a key restricted to **YouTube Data API v3** can supply it to use the official API path, inspect up to 50 recent videos per channel, and receive additional metadata where YouTube exposes it. The Actor never needs YouTube account access, OAuth, or private analytics.
 
 ## Why it is different from another YouTube scraper
 
-A scraper returns the current title, thumbnail, and view count. This Actor preserves information YouTube overwrites, reconstructs the variant sequence, associates each observed switch with a public response window, and emits an exception-only intelligence feed suitable for Sheets, BI, n8n/Make, Slack, webhooks, or AI agents.
+A snapshot tool returns the current title, thumbnail, and view count. This Actor preserves information YouTube overwrites, reconstructs the variant sequence, associates each observed switch with a public response window, and emits an exception-only intelligence feed suitable for Sheets, BI, n8n/Make, Slack, webhooks, or AI agents.
 
 ## Spend and noise controls
 
@@ -67,9 +67,8 @@ Each run writes ranked signal rows plus one `RUN_SUMMARY` with the top ten signa
 
 ```bash
 npm install
-export YOUTUBE_API_KEY="YOUR_KEY"
 npm test
 npm start
 ```
 
-This v1 uses only the official YouTube Data API and public thumbnail URLs. It does not read private analytics, comment content, transcripts, or YouTube account credentials. The supplied API key is used only for official read-only YouTube Data API requests.
+The default mode uses public YouTube channel feeds and public thumbnail URLs. An optional supplied key is used only for official read-only YouTube Data API requests. The Actor does not read private analytics, comment content, transcripts, or YouTube account credentials.

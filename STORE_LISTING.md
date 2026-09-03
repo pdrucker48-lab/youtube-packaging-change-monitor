@@ -6,11 +6,11 @@ YouTube Title & Thumbnail Change Intelligence
 
 ## Short description
 
-Preserve competitor title and thumbnail variants, detect likely packaging tests, and rank public view-velocity signals from channel URLs or @handles.
+Monitor competitor title and thumbnail changes without an API key, preserve overwritten variants, and rank public view-velocity signals.
 
 ## Opening pitch
 
-YouTube shows the current packaging; this Actor preserves what was overwritten. Paste competitor channels once, schedule the Actor, and receive a ranked machine-readable record of title switches, thumbnail swaps, reused variants, likely tests, and the observed public response curve.
+YouTube shows the current packaging; this Actor preserves what was overwritten. Paste competitor channels once—no credential setup required—then schedule the Actor to receive title switches, thumbnail swaps, reused variants, likely tests, and the observed public response curve.
 
 ## Outcome-led use cases
 
@@ -31,9 +31,9 @@ Disable the automatic `apify-default-dataset-item` event before launch to preven
 
 The first run quietly captures a baseline. Later scheduled runs emit only new or changed packaging evidence plus a ranked run digest.
 
-## Credential model
+## Data modes
 
-Customers provide a Google API key restricted to YouTube Data API v3 in Apify's encrypted secret field. No YouTube login, OAuth grant, private analytics, or shared developer quota is required.
+Keyless mode monitors up to 15 recent videos per channel through public YouTube feeds and content-hashed thumbnails. An optional customer-owned key restricted to YouTube Data API v3 unlocks up to 50 recent videos and richer official-API metadata. Neither mode needs a YouTube login, OAuth grant, or private analytics.
 
 ## Suggested categories and search terms
 
@@ -41,4 +41,4 @@ Social media; Marketing; Automation; YouTube competitor monitor; thumbnail track
 
 ## Publication gate
 
-Test two controlled runs and one known title or thumbnail change; verify that the old/new thumbnail files and response-curve rows are retained before publication.
+Test two controlled keyless runs plus one known title or thumbnail change; verify that the old/new thumbnail files and response-curve rows are retained.

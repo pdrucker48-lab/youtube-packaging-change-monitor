@@ -1,13 +1,13 @@
 {
   "name": "youtube-packaging-change-monitor",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
-  "description": "Apify Actor that detects YouTube title and thumbnail changes and tracks observed view velocity.",
+  "description": "Keyless Apify Actor that detects YouTube title and thumbnail changes and tracks observed view velocity.",
   "scripts": {
     "start": "node src/main.js",
     "test": "node --test",
-    "check": "node --check src/main.js && node --check src/lib/packaging.js && node --check src/lib/youtube-api.js"
+    "check": "node --check src/main.js && node --check src/lib/packaging.js && node --check src/lib/youtube-api.js && node --check src/lib/youtube-public.js"
   },
   "engines": {
     "node": ">=22"
