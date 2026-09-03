@@ -24,7 +24,24 @@ try {
     const input = await Actor.getInput() ?? {};
     const channels = input.channels ?? input.channelIds ?? [];
     const youtubeApiKey = input.youtubeApiKey || process.env.YOUTUBE_API_KEY;
-    validateInput({ ...input, channels, youtubeApiKey });
+
+    if (!youtubeApiKey || !Array.isArray(channels) || channels.length === 0) {
+        const missing = [
+            ...(!youtubeApiKey ? ['youtubeApiKey'] : []),
+            ...(!Array.isArray(channels) || channels.length === 0 ? ['channels'] : []),
+        ];
+        await Actor.pushData({
+            recordType: 'configuration-required',
+            eventType: 'CONFIGURATION_REQUIRED',
+            ready: false,
+            missing,
+            setup: 'Add a YouTube Data API v3 key and at least one public channel URL, @handle, or channel ID, then run again.',
+            documentation: 'https://github.com/pdrucker48-lab/youtube-packaging-change-monitor#quick-start',
+            observationalNotCausal: true,
+        });
+        log.info(`Configuration required: ${missing.join(', ')}`);
+    } else {
+        validateInput({ ...input, channels, youtubeApiKey });
 
     const {
         recentVideosPerChannel = 5,
@@ -220,7 +237,8 @@ try {
     await store.setValue('LATEST_RUN_SUMMARY', summary);
     if (webhookUrl) await postWebhook(webhookUrl, { signals: rankedSignals, summary }, timeoutMs);
 
-    log.info(`Observed ${videosObserved} videos and emitted ${output.length} signals.`);
+        log.info(`Observed ${videosObserved} videos and emitted ${output.length} signals.`);
+    }
 } finally {
     await Actor.exit();
 }
