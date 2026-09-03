@@ -10,7 +10,7 @@
     "check": "node --check src/main.js && node --check src/lib/packaging.js && node --check src/lib/youtube-api.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "apify": "^3.4.0"
