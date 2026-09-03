@@ -9,8 +9,7 @@
       "type": "string",
       "description": "Optional when the published Actor has a developer-hosted key. Otherwise provide your own Google API key with YouTube Data API v3 enabled.",
       "editor": "textfield",
-      "isSecret": true,
-      "minLength": 10
+      "isSecret": true
     },
     "channels": {
       "title": "Competitor channels",
@@ -18,8 +17,7 @@
       "description": "Paste ordinary channel URLs, @handles, or canonical IDs. Up to 100 channels per run.",
       "editor": "stringList",
       "items": {
-        "type": "string",
-        "minLength": 3
+        "type": "string"
       },
       "minItems": 1,
       "maxItems": 100
@@ -27,6 +25,7 @@
     "recentVideosPerChannel": {
       "title": "Recent videos per channel",
       "type": "integer",
+      "description": "Number of recent uploads inspected for each channel on every run.",
       "default": 5,
       "minimum": 1,
       "maximum": 50,
@@ -100,6 +99,7 @@
     "requestTimeoutSecs": {
       "title": "Request timeout",
       "type": "integer",
+      "description": "Maximum seconds to wait for each YouTube API or thumbnail request.",
       "default": 25,
       "minimum": 5,
       "maximum": 60,
