@@ -1,0 +1,17 @@
+{
+  "actorSpecification": 1,
+  "name": "youtube-packaging-change-monitor",
+  "title": "YouTube Title & Thumbnail Change Intelligence",
+  "description": "Track competitor packaging tests from channel URLs or handles, preserve every title and thumbnail variant, and rank observed performance signals.",
+  "version": "1.1",
+  "dockerfile": "../Dockerfile",
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "changelog": "./CHANGELOG.md",
+  "defaultMemoryMbytes": 256,
+  "minMemoryMbytes": 128,
+  "maxMemoryMbytes": 512,
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  }
+}

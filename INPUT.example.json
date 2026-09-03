@@ -1,0 +1,13 @@
+{
+  "channels": [
+    "https://www.youtube.com/@GoogleDevelopers"
+  ],
+  "recentVideosPerChannel": 5,
+  "monitorKey": "competitor-watchlist",
+  "changeWindowDays": 7,
+  "impactSamplesPerChange": 3,
+  "publishedWithinDays": 30,
+  "minimumViews": 0,
+  "minimumSignalScore": 40,
+  "emitBaseline": false
+}

@@ -1,0 +1,18 @@
+{
+  "name": "youtube-packaging-change-monitor",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Apify Actor that detects YouTube title and thumbnail changes and tracks observed view velocity.",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node --test",
+    "check": "node --check src/main.js && node --check src/lib/packaging.js && node --check src/lib/youtube-api.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "apify": "^3.4.0"
+  }
+}

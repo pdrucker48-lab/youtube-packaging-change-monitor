@@ -1,0 +1,110 @@
+{
+  "title": "YouTube Title & Thumbnail Change Intelligence input",
+  "description": "Paste public YouTube channel URLs, @handles, or IDs. The Actor preserves packaging variants and ranks the strongest observed signals.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "youtubeApiKey": {
+      "title": "YouTube Data API key",
+      "type": "string",
+      "description": "Optional when the published Actor has a developer-hosted key. Otherwise provide your own Google API key with YouTube Data API v3 enabled.",
+      "editor": "textfield",
+      "isSecret": true,
+      "minLength": 10
+    },
+    "channels": {
+      "title": "Competitor channels",
+      "type": "array",
+      "description": "Paste ordinary channel URLs, @handles, or canonical IDs. Up to 100 channels per run.",
+      "editor": "stringList",
+      "items": {
+        "type": "string",
+        "minLength": 3
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "recentVideosPerChannel": {
+      "title": "Recent videos per channel",
+      "type": "integer",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 50,
+      "editor": "number"
+    },
+    "monitorKey": {
+      "title": "Monitor key",
+      "type": "string",
+      "description": "Stable key for this watchlist. Keep it unchanged on scheduled runs.",
+      "default": "default",
+      "editor": "textfield",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "changeWindowDays": {
+      "title": "Post-change measurement window",
+      "type": "integer",
+      "description": "Maximum age of a detected change for one follow-up velocity observation.",
+      "default": 7,
+      "minimum": 1,
+      "maximum": 30,
+      "editor": "number"
+    },
+    "impactSamplesPerChange": {
+      "title": "Impact samples per change",
+      "type": "integer",
+      "description": "Number of unchanged follow-up observations used to form a machine-readable response curve.",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 12,
+      "editor": "number"
+    },
+    "publishedWithinDays": {
+      "title": "Maximum video age",
+      "type": "integer",
+      "description": "Ignore older videos to focus spend on active packaging decisions.",
+      "default": 30,
+      "minimum": 1,
+      "maximum": 365,
+      "editor": "number"
+    },
+    "minimumViews": {
+      "title": "Minimum public views",
+      "type": "integer",
+      "description": "Ignore videos below this public view count.",
+      "default": 0,
+      "minimum": 0,
+      "editor": "number"
+    },
+    "minimumSignalScore": {
+      "title": "Minimum signal score",
+      "type": "integer",
+      "description": "Only deliver packaging events at or above this deterministic 0–100 score.",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 100,
+      "editor": "number"
+    },
+    "emitBaseline": {
+      "title": "Emit baseline rows",
+      "type": "boolean",
+      "description": "When enabled, first-seen videos are written as BASELINE_VIDEO records. The baseline is always stored.",
+      "default": false,
+      "editor": "checkbox"
+    },
+    "webhookUrl": {
+      "title": "Webhook URL",
+      "type": "string",
+      "description": "Optional HTTPS endpoint receiving the change records and run summary.",
+      "editor": "textfield"
+    },
+    "requestTimeoutSecs": {
+      "title": "Request timeout",
+      "type": "integer",
+      "default": 25,
+      "minimum": 5,
+      "maximum": 60,
+      "editor": "number"
+    }
+  },
+  "required": ["channels", "monitorKey"]
+}

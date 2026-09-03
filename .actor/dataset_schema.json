@@ -1,0 +1,80 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "recordType": { "type": "string", "title": "Record type" },
+      "eventType": { "type": "string", "title": "Event type" },
+      "channelId": { "type": "string", "title": "YouTube channel ID" },
+      "channelTitle": { "type": ["string", "null"], "title": "Channel" },
+      "videoId": { "type": "string", "title": "YouTube video ID" },
+      "videoUrl": { "type": "string", "title": "Watch URL" },
+      "oldTitle": { "type": ["string", "null"], "title": "Previous title" },
+      "newTitle": { "type": ["string", "null"], "title": "Current title" },
+      "oldThumbnail": { "type": ["object", "null"], "title": "Previous thumbnail" },
+      "newThumbnail": { "type": ["object", "null"], "title": "Current thumbnail" },
+      "viewsPerHourBeforeChange": { "type": ["number", "null"], "title": "Views per hour before" },
+      "viewsPerHourAfterChange": { "type": ["number", "null"], "title": "Views per hour after" },
+      "velocityChangePercent": { "type": ["number", "null"], "title": "Velocity change percent" },
+      "sampleNumber": { "type": ["integer", "null"], "title": "Impact sample" },
+      "isFinalSample": { "type": "boolean", "title": "Final impact sample" },
+      "variantSequenceNumber": { "type": ["integer", "null"], "title": "Variant sequence" },
+      "rotationCount": { "type": ["integer", "null"], "title": "Packaging rotations" },
+      "isLikelyPackagingTest": { "type": "boolean", "title": "Likely packaging test" },
+      "signalScore": { "type": ["number", "null"], "title": "Signal score" },
+      "priority": { "type": "string", "title": "Priority" },
+      "detectedAt": { "type": "string", "title": "Detection time" },
+      "observationalNotCausal": { "type": "boolean", "title": "Observational only" },
+      "fingerprint": { "type": "string", "title": "Stable event fingerprint" }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Packaging changes",
+      "transformation": {
+        "fields": [
+          "priority",
+          "signalScore",
+          "eventType",
+          "channelTitle",
+          "videoId",
+          "videoUrl",
+          "oldTitle",
+          "newTitle",
+          "viewsPerHourBeforeChange",
+          "viewsPerHourAfterChange",
+          "velocityChangePercent",
+          "sampleNumber",
+          "variantSequenceNumber",
+          "rotationCount",
+          "isLikelyPackagingTest",
+          "detectedAt",
+          "observationalNotCausal"
+        ]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "priority": { "label": "Priority", "format": "text" },
+          "signalScore": { "label": "Signal", "format": "number" },
+          "eventType": { "label": "Event", "format": "text" },
+          "channelTitle": { "label": "Channel", "format": "text" },
+          "videoId": { "label": "Video", "format": "text" },
+          "videoUrl": { "label": "Watch", "format": "link" },
+          "oldTitle": { "label": "Old title", "format": "text" },
+          "newTitle": { "label": "New title", "format": "text" },
+          "viewsPerHourBeforeChange": { "label": "Views/hr before", "format": "number" },
+          "viewsPerHourAfterChange": { "label": "Views/hr after", "format": "number" },
+          "velocityChangePercent": { "label": "Velocity %", "format": "number" },
+          "sampleNumber": { "label": "Curve point", "format": "number" },
+          "variantSequenceNumber": { "label": "Variant", "format": "number" },
+          "rotationCount": { "label": "Rotations", "format": "number" },
+          "isLikelyPackagingTest": { "label": "Likely test", "format": "boolean" },
+          "detectedAt": { "label": "Detected", "format": "date" },
+          "observationalNotCausal": { "label": "Observational", "format": "boolean" }
+        }
+      }
+    }
+  }
+}

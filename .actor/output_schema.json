@@ -1,0 +1,11 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "YouTube packaging changes and run summary",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Change records",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    }
+  }
+}
