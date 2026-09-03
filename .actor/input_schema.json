@@ -106,5 +106,5 @@
       "editor": "number"
     }
   },
-  "required": ["youtubeApiKey", "channels", "monitorKey"]
+  "required": []
 }
