@@ -22,7 +22,9 @@ Users can paste any of these forms:
 - `@GoogleDevelopers`
 - `UC_x5XG1OV2P6uZZ5FSM9Ttw`
 
-For the lowest-friction Store experience, configure a developer-owned `YOUTUBE_API_KEY` secret in the Actor environment. The optional encrypted `youtubeApiKey` input remains available for high-volume customers who prefer their own quota.
+Provide a Google API key with YouTube Data API v3 enabled in the encrypted `youtubeApiKey` field. Restrict the key to YouTube Data API v3 in Google Cloud. Bring-your-own-key keeps every customer's quota isolated and avoids shared-key outages; the Actor never needs YouTube account access or OAuth.
+
+Create a key in [Google Cloud credentials](https://console.cloud.google.com/apis/credentials), enable **YouTube Data API v3**, then add an **API restriction** for that API. Google does not offer an application restriction that reliably matches Apify's rotating cloud egress, so do not reuse the key for unrelated APIs.
 
 ## Why it is different from another YouTube scraper
 
@@ -70,4 +72,4 @@ npm test
 npm start
 ```
 
-This v1 uses only the official YouTube Data API and public thumbnail URLs. It does not read private analytics, comments content, transcripts, or account credentials beyond the optional API key.
+This v1 uses only the official YouTube Data API and public thumbnail URLs. It does not read private analytics, comment content, transcripts, or YouTube account credentials. The supplied API key is used only for official read-only YouTube Data API requests.
