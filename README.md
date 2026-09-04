@@ -48,16 +48,14 @@ The first channel baseline is quiet and free. Set `emitBaseline` only when raw b
 
 Keep the same `monitorKey` across runs. Changing it deliberately creates a new baseline.
 
-## Recommended Store pricing
+## Transparent usage-based pricing
 
-Configure two pay-per-event charges:
+There is no subscription or setup fee. The first baseline for each channel is free.
 
-- `video-observation` — **$0.001 per previously baselined video observation**;
-- `packaging-signal` — **$0.02 per new video, packaging change, or post-change impact record**.
+- Routine monitoring costs **$0.001 per previously baselined video observation**.
+- New uploads, title or thumbnail changes, and follow-up impact records cost **$0.02 each**.
 
-Remove the automatic `apify-default-dataset-item` event in the pricing setup so run summaries and evidence rows are not double-charged.
-
-At the default five recent videos and one daily run, 100 channels cost about $15/month before occasional signal charges—close to specialist SaaS pricing while providing API-native data and preserved creative assets. The first baseline is not charged.
+At five recent videos and one daily run, monitoring 100 channels costs about $15/month before occasional change alerts. Use the video-age, minimum-view, and signal-score controls to focus the watchlist and manage spend.
 
 ## Output and storage
 
